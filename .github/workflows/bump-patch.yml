@@ -12,13 +12,15 @@ jobs:
 
       - name: Bump patch
         run: |
+          echo ::set-env name=INC_PATCH::$(($PATCH + 1))
+        run: |
           curl -L \
             -X PATCH \
             -H "Accept: application/vnd.github+json" \
             -H "Authorization: Bearer $TOKEN"\
             -H "X-GitHub-Api-Version: 2022-11-28" \
             https://api.github.com/repos/charles-mhm/test-bump-version-action/actions/variables/PATCH \
-            -d '{"name":"PATCH","value":$(($PATCH + 1))}'
+            -d '{"name":"PATCH","value":$INC_PATCH}'
         env:
           TOKEN: ${{ secrets.TOKEN }}
           PATCH: ${{ vars.PATCH }}
