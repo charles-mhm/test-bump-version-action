@@ -20,6 +20,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+      
+      - name: print input
+        run: echo ${{ github.event.inputs.bump }}
 
       - name: Bump patch
         if: ${{ github.event.inputs.bump == 'patch' }}
