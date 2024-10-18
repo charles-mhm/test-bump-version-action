@@ -21,7 +21,7 @@ jobs:
           TOKEN: ${{ secrets.TOKEN }}
 
       - name: Bump major
-        run: ./bump_version.sh MAJOR $(($MAJOR + 1)
+        run: ./bump_version.sh MAJOR $(($MAJOR + 1))
         env:
           TOKEN: ${{ secrets.TOKEN }}
           PATCH: ${{ vars.MAJOR }}
