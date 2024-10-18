@@ -17,6 +17,9 @@ jobs:
         env:
           PATCH: ${{ vars.PATCH }}
       
+      -name: confusion
+        run: ls -a
+
       - name: Bump patch
         run: bash test-bump-version-action/bump_version.sh
         env:
