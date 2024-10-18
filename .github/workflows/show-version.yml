@@ -1,0 +1,18 @@
+on:
+  push:
+    - main
+
+jobs:
+  print-version:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Show version
+        run: |
+          echo "Version: $MAJOR:$MINOR:$PATCH"
+        env:
+          MAJOR: ${{ vars.MAJOR }}
+          MINOR: ${{ vars.MINOR }}
+          PATCH: ${{ vars.PATCH }}
