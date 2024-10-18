@@ -22,7 +22,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Bump patch
-        if ${{ github.event.inputs.bump == 'patch' }}
+        if: ${{ github.event.inputs.bump == 'patch' }}
         run: |
           curl -L \
             -X PATCH \
@@ -36,7 +36,7 @@ jobs:
           PATCH: ${{ vars.PATCH }}
 
       - name: Bump minor
-        if ${{ github.event.inputs.bump == 'minor' }}
+        if: ${{ github.event.inputs.bump == 'minor' }}
         run: |
           curl -L \
             -X PATCH \
@@ -50,7 +50,7 @@ jobs:
           PATCH: ${{ vars.MINOR }}
         
       - name: Bump major
-        if ${{ github.event.inputs.bump == 'major' }}
+        if: ${{ github.event.inputs.bump == 'major' }}
         run: |
           curl -L \
             -X PATCH \
