@@ -9,17 +9,19 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-       
+
+      - name: Bump patch
+        run: ./bump_version.sh PATCH 0
+        env:
+          TOKEN: ${{ secrets.TOKEN }}
+
+      - name: Bump minor
+        run: ./bump_version.sh MINOR 0
+        env:
+          TOKEN: ${{ secrets.TOKEN }}
+
       - name: Bump major
-        if: ${{ github.event.inputs.bump == 'major' }}
-        run: |
-          curl -L \
-            -X PATCH \
-            -H "Accept: application/vnd.github+json" \
-            -H "Authorization: Bearer $TOKEN"\
-            -H "X-GitHub-Api-Version: 2022-11-28" \
-            https://api.github.com/repos/charles-mhm/test-bump-version-action/actions/variables/MAJOR \
-            -d '{"name":"MAJOR","value":"$(($MAJOR + 1))}"'
+        run: ./bump_version.sh MAJOR $(($MAJOR + 1)
         env:
           TOKEN: ${{ secrets.TOKEN }}
           PATCH: ${{ vars.MAJOR }}
