@@ -10,9 +10,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Bump patch
+      - name: Increment
         run: |
           echo ::set-env name=INC_PATCH::$(($PATCH + 1))
+        env:
+          PATCH: ${{ vars.PATCH }}
+      
+      - name: Bump patch
         run: |
           curl -L \
             -X PATCH \
