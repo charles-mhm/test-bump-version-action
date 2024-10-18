@@ -21,7 +21,7 @@ jobs:
           PATCH: ${{ vars.PATCH }}
       
       - name: confusion
-        run: ls -a
+        run: echo "$PATCH" "$VALUE"
 
       - name: Bump patch
         run: ./bump_version.sh
