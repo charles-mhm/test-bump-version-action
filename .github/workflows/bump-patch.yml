@@ -21,6 +21,6 @@ jobs:
         run: ls -a
 
       - name: Bump patch
-        run: bash test-bump-version-action/bump_version.sh
+        run: bash bump_version.sh
         env:
           TOKEN: ${{ secrets.TOKEN }}
