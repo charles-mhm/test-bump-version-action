@@ -10,9 +10,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: Set Name
+        run: |
+          echo "NAME=PATCH" >> $GITHUB_ENV
+
       - name: Increment
         run: |
-          echo "NAME=PATCH" >> $GITHUB_ENV \
           echo "VALUE=$(($PATCH + 1))" >> $GITHUB_ENV
         env:
           PATCH: ${{ vars.PATCH }}
