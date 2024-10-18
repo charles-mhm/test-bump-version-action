@@ -12,7 +12,7 @@ jobs:
 
       - name: Increment
         run: |
-          echo ::set-env name=INC_PATCH::$(($PATCH + 1))
+          echo "PATCH=$(($PATCH + 1))" >> $GITHUB_ENV
         env:
           PATCH: ${{ vars.PATCH }}
       
@@ -27,4 +27,3 @@ jobs:
             -d '{"name":"PATCH","value":$INC_PATCH}'
         env:
           TOKEN: ${{ secrets.TOKEN }}
-          PATCH: ${{ vars.PATCH }}
