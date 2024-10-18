@@ -18,6 +18,6 @@ jobs:
           PATCH: ${{ vars.PATCH }}
       
       - name: Bump patch
-        run: chmod +x ./bump_version.sh && ./bump_version.sh
+        run: bash test-bump-version-action/bump_version.sh
         env:
           TOKEN: ${{ secrets.TOKEN }}
